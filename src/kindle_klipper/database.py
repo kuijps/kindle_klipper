@@ -15,3 +15,7 @@ def update_database(file_path, db_path,table_name):
     print(df)
 
     conn.close()
+
+def get_random_highlight(conn):
+    cursor = conn.execute("SELECT * FROM highlights ORDER BY RANDOM() LIMIT 1")
+    return cursor.fetchone()
