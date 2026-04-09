@@ -3,7 +3,7 @@ name: Send Daily Kindle Highlight
 on:
   schedule:
     - cron: "0 13 * * *"   # runs daily at 13:00 UTC
-  workflow_dispatch:        # lets you trigger it manually
+  workflow_dispatch:        # can be triggered manually
 
 jobs:
   run-highlight:
