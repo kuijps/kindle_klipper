@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3 
 import os
-from config import HIGHLIGHTS_TABLE
+from kindle_klipper.config import HIGHLIGHTS_TABLE
 
 
 # pass the path to the csv file, the path to the database and the name of the table you want to create
@@ -23,10 +23,10 @@ def connect_db(db_path):
     return conn
 
 def get_random_highlight(conn):
-    cursor = conn.execute("SELECT * FROM {HIGHLIGHTS_TABLE} ORDER BY RANDOM() LIMIT 1")
+    cursor = conn.execute(f"SELECT * FROM {HIGHLIGHTS_TABLE} ORDER BY RANDOM() LIMIT 1")
     return cursor.fetchone()
     
 
 def get_all_highlights(conn):
-    cursor = conn.execute("SELECT * FROM {HIGHLIGHTS_TABLE}")
+    cursor = conn.execute(f"SELECT * FROM {HIGHLIGHTS_TABLE}")
     return cursor.fetchall()
