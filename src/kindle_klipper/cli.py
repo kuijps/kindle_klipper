@@ -1,4 +1,4 @@
-from kindle_klipper import parser, database, email
+from kindle_klipper import parser, database, email, selector
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -19,10 +19,18 @@ def main():
     print("starting kindle_klipper!")
     
     root = Path(__file__).resolve().parent.parents[1]
-    clippings_path = root / "My Clippings.txt"
+    clippings_path = root / "data" / "My Clippings.txt"
     if not clippings_path.exists():
         print(f"Error: {clippings_path} not found. Please ensure the file is in the correct location.")
         return
     parser.parse_clippings(clippings_path)
-    database.update_database("kindle_highlights.csv", "kindle_clippings.db", "highlights")
+    database.create_database("kindle_highlights.csv", "kindle_clippings.db", "highlights")
+    
     email.send_email(SMTP_SERVER, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD, EMAIL_FROM, EMAIL_TO, EMAIL_SUBJECT)
+    #email.send_email("ckuijpe@gmail.com", "testing", "im using a new email client library")
+    
+
+def random_highlight():
+    conn = database.connect_db(DB_PATH)
+    highlight = selector.pick_random_highlight(conn)
+    print(highlight)

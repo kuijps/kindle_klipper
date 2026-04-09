@@ -1,0 +1,1 @@
+HIGHLIGHTS_TABLE = "highlights"

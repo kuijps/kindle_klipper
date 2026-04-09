@@ -8,7 +8,9 @@ requires-python = ">=3.10"
 
 [project.scripts]
 kindle_klipper = "kindle_klipper.cli:main"
+kk_random = "kindle_klipper.cli:random_highlight"
 
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
+    

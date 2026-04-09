@@ -1,11 +1,13 @@
 import pandas as pd
 import sqlite3 
+import os
+from config import HIGHLIGHTS_TABLE
 
 
-def update_database(file_path, db_path,table_name):
+# pass the path to the csv file, the path to the database and the name of the table you want to create
+def create_database(file_path, db_path,table_name):
 
     df = pd.read_csv(file_path)
-
     conn = sqlite3.connect(db_path)
 
     df.to_sql(table_name, conn, if_exists="replace", index=False)
@@ -16,6 +18,15 @@ def update_database(file_path, db_path,table_name):
 
     conn.close()
 
+def connect_db(db_path):
+    conn = sqlite3.connect(db_path)
+    return conn
+
 def get_random_highlight(conn):
-    cursor = conn.execute("SELECT * FROM highlights ORDER BY RANDOM() LIMIT 1")
+    cursor = conn.execute("SELECT * FROM {HIGHLIGHTS_TABLE} ORDER BY RANDOM() LIMIT 1")
     return cursor.fetchone()
+    
+
+def get_all_highlights(conn):
+    cursor = conn.execute("SELECT * FROM {HIGHLIGHTS_TABLE}")
+    return cursor.fetchall()
