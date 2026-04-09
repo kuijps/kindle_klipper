@@ -11,7 +11,7 @@ pandas = "*"
 numpy = "*"
 python-dateutil = "*"
 six = "*"
-email_utils = { git = "https://github.com/kuijps/email_utils.git", rev = "d36cb1b69f55eacbbb39a66869748ec140097b36" }
+
 
 [project.scripts]
 kindle_klipper = "kindle_klipper.cli:main"
