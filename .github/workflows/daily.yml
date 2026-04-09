@@ -1,0 +1,30 @@
+name: Send Daily Kindle Highlight
+
+on:
+  schedule:
+    - cron: "0 13 * * *"   # runs daily at 13:00 UTC
+  workflow_dispatch:        # lets you trigger it manually
+
+jobs:
+  run-highlight:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: pip install -e .
+
+      - name: Run daily highlight
+        env:
+          EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+          EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+        run: kk_random
