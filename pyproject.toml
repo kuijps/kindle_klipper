@@ -5,12 +5,13 @@ description = "turn your clippings.txt to a structured database"
 readme = "README.md"
 requires-python = ">=3.10"
 
-[project.dependencies]
-python-dotenv = "*"
-pandas = "*"
-numpy = "*"
-python-dateutil = "*"
-six = "*"
+dependencies = [
+    "python-dotenv",
+    "pandas",
+    "numpy",
+    "python-dateutil",
+    "six"
+]
 
 
 [project.scripts]
