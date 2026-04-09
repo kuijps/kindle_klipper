@@ -1,6 +1,9 @@
-# Editable install with no version control (kindle_klipper==0.1.0)
--e /mnt/c/code/kindle_klipper
+dotenv==0.9.9
+email_utils @ git+https://github.com/kuijps/email_utils.git@d36cb1b69f55eacbbb39a66869748ec140097b36
+git-filter-repo==2.47.0
+-e git+ssh://git@github.com/kuijps/kindle_klipper.git@631631dce6d15888f4692973ad5b60a06738919b#egg=kindle_klipper
 numpy==2.4.4
 pandas==3.0.2
 python-dateutil==2.9.0.post0
+python-dotenv==1.2.2
 six==1.17.0

@@ -5,6 +5,13 @@ description = "turn your clippings.txt to a structured database"
 readme = "README.md"
 requires-python = ">=3.10"
 
+[project.dependencies]
+python-dotenv = "*"
+pandas = "*"
+numpy = "*"
+python-dateutil = "*"
+six = "*"
+email_utils = { git = "https://github.com/kuijps/email_utils.git", rev = "d36cb1b69f55eacbbb39a66869748ec140097b36" }
 
 [project.scripts]
 kindle_klipper = "kindle_klipper.cli:main"
@@ -13,4 +20,3 @@ kk_random = "kindle_klipper.cli:random_highlight"
 [build-system]
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
-    
