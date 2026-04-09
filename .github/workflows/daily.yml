@@ -21,17 +21,6 @@ jobs:
       - name: Install package
         run: pip install -e .
 
-      # Create the /data directory code expects
-      - name: Create data directory
-        run: mkdir -p data
-
-      # Download  persisted DB artifact into /data
-      - name: Download clippings DB
-        uses: actions/download-artifact@v4
-        with:
-          name: kindleclippings-db
-          path: data
-
       #  Run script with DB_PATH pointing to the file in /data
       - name: Run daily highlight
         env:
@@ -45,10 +34,4 @@ jobs:
           DB_PATH: data/kindle_clippings.db
         run: kk_random
 
-      #  Upload the updated DB back to the artifact store
-      - name: Upload updated DB
-        uses: actions/upload-artifact@v4
-        with:
-          name: kindleclippings-db
-          path: data/kindle_clippings.db
-          overwrite: true
+
