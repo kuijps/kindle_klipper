@@ -34,3 +34,6 @@ def random_highlight():
     conn = database.connect_db(DB_PATH)
     highlight = selector.pick_random_highlight(conn)
     print(highlight)
+    email_subject = f"Random Kindle Highlight: {highlight[0]} by {highlight[1]}"
+    email_content = f"{highlight[0]} by {highlight[1]}\n\n{highlight[4]}\n\nAdded on: {highlight[3]}"
+    email.send_email(SMTP_SERVER, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD, EMAIL_FROM, EMAIL_TO, email_subject, email_content)
