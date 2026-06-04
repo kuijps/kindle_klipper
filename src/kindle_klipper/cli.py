@@ -1,3 +1,5 @@
+# main entry point for the kindle_klipper application. This will be the CLI interface that users interact with to run the various functions of the application, such as parsing clippings, creating the database, and sending emails.
+
 from kindle_klipper import parser, database, email, selector
 from pathlib import Path
 import os
