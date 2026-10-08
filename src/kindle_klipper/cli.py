@@ -17,7 +17,7 @@ EMAIL_FROM = os.getenv("EMAIL_FROM")
 EMAIL_TO = os.getenv("EMAIL_TO")
 EMAIL_SUBJECT = os.getenv("EMAIL_SUBJECT")
 
-
+# main
 def main():
     print("starting kindle_klipper!")
     
